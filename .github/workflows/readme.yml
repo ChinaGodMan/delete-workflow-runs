@@ -1,0 +1,28 @@
+name: Delete Workflow Runs
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *" UTC+0 凌晨十二点执行
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: "delete_workflow_runs.py"
+
+      - name: Install dependencies
+        run: |
+          pip install requests
+
+      - name: cleanup
+        env:
+          GITHUB_TOKEN: ${{ secrets.DELETE_WORKFLOW_RUNS }}
+          REPO_OWNER: ${{ github.repository_owner }}
+          REPO_NAME: "ChinaGodMan,UserScripts,UserScriptsHistory,stats,github-stats-remotion,delete-workflow-runs"
+        run: |
+          python delete_workflow_runs.py
