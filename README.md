@@ -25,11 +25,11 @@ A script and workflow for automating the cleanup of GitHub Actions workflow run 
 
 The following environment variables need to be set in GitHub Secrets:
 
-| Variable Name          | Description                                                                           |
-| ---------------------- | ------------------------------------------------------------------------------------- |
-| `DELETE_WORKFLOW_RUNS` | GitHub Personal Access Token with `repo` and `workflow` permissions.                  |
-| `REPO_OWNER`           | Repository owner username (typically your GitHub username or org name).               |
-| `REPO_NAME`            | Names of repositories to clean up, separated by commas (e.g., `repoa,repob,repoccc`). |
+| Variable Name  | Description                                                                           |
+| -------------- | ------------------------------------------------------------------------------------- |
+| `GITHUB_TOKEN` | GitHub Personal Access Token with `repo` and `workflow` permissions.                  |
+| `REPO_OWNER`   | Repository owner username (typically your GitHub username or org name).               |
+| `REPO_NAME`    | Names of repositories to clean up, separated by commas (e.g., `repoa,repob,repoccc`). |
 
 ### 2. Scheduled Tasks
 
