@@ -23,6 +23,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.DELETE_WORKFLOW_RUNS }}
           REPO_OWNER: ${{ github.repository_owner }}
-          REPO_NAME: "ChinaGodMan,UserScripts,UserScriptsHistory,stats,github-stats-remotion,delete-workflow-runs,auto-gitee-mirror"
+          REPO_NAME: "ChinaGodMan,UserScripts,UserScriptsHistory,stats,github-stats-remotion,delete-workflow-runs,auto-gitee-mirror,test-actions"
         run: |
           python delete_workflow_runs.py
