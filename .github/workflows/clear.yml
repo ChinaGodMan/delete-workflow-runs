@@ -3,11 +3,13 @@ name: Delete Workflow Runs
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 0 * * *" #UTC+0 凌晨十二点执行
+    - cron: "0 0 * * *" # UTC+8 早上08：00执行
 
 jobs:
   cleanup:
     runs-on: ubuntu-latest
+    env:
+      TZ: Asia/Shanghai
 
     steps:
       - name: Checkout repository
@@ -16,13 +18,13 @@ jobs:
           sparse-checkout: "delete_workflow_runs.py"
 
       - name: Install dependencies
-        run: |
-          pip install requests
+        run: pip install requests
 
       - name: cleanup
         env:
           GITHUB_TOKEN: ${{ secrets.DELETE_WORKFLOW_RUNS }}
           REPO_OWNER: ${{ github.repository_owner }}
-          REPO_NAME: "ChinaGodMan,UserScripts,UserScriptsHistory,stats,github-stats-remotion,delete-workflow-runs,auto-gitee-mirror,test-actions"
+          REPO_NAME: "sync-greasyfork-favorite,ChinaGodMan,UserScripts,UserScriptsHistory,stats,github-stats-remotion,delete-workflow-runs,auto-gitee-mirror,test-actions"
         run: |
           python delete_workflow_runs.py
+          bash log.sh
