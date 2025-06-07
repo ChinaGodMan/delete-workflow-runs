@@ -2,8 +2,8 @@ name: Delete Workflow Runs
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "0 0 * * *" # UTC+8 早上08：00执行
+#  schedule:
+#    - cron: "0 0 * * *" # UTC+8 早上08：00执行
 
 jobs:
   cleanup:
